@@ -1,12 +1,12 @@
-import {createStore, combineReducers} from 'redux'
-import 'gradesReducer' from '../reducers/gradesReducer'
-import 'infoReducer' from '../reducers/infoReducer'
+import { createStore, combineReducers } from 'redux'
+import gradesReducer from '../reducers/gradesReducer'
+import infoReducer from '../reducers/infoReducer'
 
-export default()=>{
-	const store =createStore(
+export default () => {
+	const store = createStore(
 		combineReducers({
-			grades:gradesReducer,
-			info:infoReducer
+			grades: gradesReducer,
+			info: infoReducer
 		})
 	)
 	return store
