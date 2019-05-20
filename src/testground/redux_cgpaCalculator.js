@@ -17,6 +17,12 @@ const addCourse = ({
 	}
 })
 
+//Remove Course
+const removeCourse = ({ courseId = '' } = {}) => ({
+	type: 'REMOVE_COURSE',
+	id: courseId
+})
+
 //Edit Course
 
 //
@@ -36,7 +42,8 @@ const coursesReducer = (state = coursesReducerDefaultState, action) => {
 	switch (action.type) {
 		case 'ADD_COURSE':
 			return [...state, action.course]
-
+		case 'REMOVE_COURSE':
+			return state.filter(({ id }) => id != action.id)
 		default:
 			return state
 	}
@@ -78,3 +85,5 @@ store.dispatch({ type: 'RESET_INFO', updates: { userName: 'Muez' } })
 store.dispatch(
 	addCourse({ courseId: 'PBH 101', semester: 172, grade: 'A', gpa: 4 })
 )
+
+store.dispatch(removeCourse({ courseId: 'CSE 115' }))
