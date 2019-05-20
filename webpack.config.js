@@ -2,7 +2,6 @@ const path = require('path')
 
 module.exports = {
 	entry: './src/testground/redux_cgpaCalculator.js',
-	mode: 'development',
 	output: {
 		path: path.join(__dirname, 'public'),
 		filename: 'bundle.js'
@@ -13,6 +12,10 @@ module.exports = {
 				loader: 'babel-loader',
 				test: /\.js$/,
 				exclude: /node_modules/
+			},
+			{
+				test: /\.s?css$/,
+				use: ['style-loader', 'css-loader', 'sass-loader']
 			}
 		]
 	},
