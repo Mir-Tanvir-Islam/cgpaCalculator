@@ -1,13 +1,42 @@
 import { createStore, combineReducers } from 'redux'
 
-//Add Grade
-//Remove Grade
-//Edit Grade
+//Add Course
+const addCourse = ({
+	courseId = '',
+	semester = '',
+	grade = '',
+	gpa = ''
+} = {}) => ({
+	type: 'ADD_COURSE',
+	course: {
+		id: courseId,
+		courseId,
+		semester,
+		grade,
+		gpa
+	}
+})
 
-const gradesReducerDefaultState = []
+//Edit Course
 
-const gradesReducer = (state = gradesReducerDefaultState, action) => {
+//
+
+const coursesReducerDefaultState = [
+	{
+		//grade, gpa, course id, semester no
+		id: 'CSE 115',
+		courseId: 'CSE 115',
+		semester: 171,
+		grade: 'A',
+		gpa: 4
+	}
+]
+
+const coursesReducer = (state = coursesReducerDefaultState, action) => {
 	switch (action.type) {
+		case 'ADD_COURSE':
+			return [...state, action.course]
+
 		default:
 			return state
 	}
@@ -26,6 +55,8 @@ const infoReducer = (state = infoReducerDefaultState, action) => {
 	switch (action.type) {
 		case 'SET_INFO':
 			return { ...state, ...action.updates }
+		case 'RESET_INFO':
+			return { userName: '', id: '', email: '' }
 		default:
 			return state
 	}
@@ -33,12 +64,17 @@ const infoReducer = (state = infoReducerDefaultState, action) => {
 
 const store = createStore(
 	combineReducers({
-		grades: gradesReducer,
+		courses: coursesReducer,
 		info: infoReducer
 	})
 )
 
-console.log(store.getState())
+const unSubscribe = store.subscribe(() => {
+	console.log(store.getState())
+})
 
-store.dispatch({ type: 'SET_INFO', updates: { userName: 'Muez' } })
-console.log(store.getState())
+store.dispatch({ type: 'RESET_INFO', updates: { userName: 'Muez' } })
+
+store.dispatch(
+	addCourse({ courseId: 'PBH 101', semester: 172, grade: 'A', gpa: 4 })
+)
