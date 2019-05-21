@@ -14,6 +14,8 @@ const unSubscribe = store.subscribe(() => {
 	console.log(getCGPA(store))
 })
 
+///////////////////////
+
 store.dispatch(
 	addCourse({ courseId: 'PBH 101', semester: 172, grade: 'A', gpa: 4 })
 )
@@ -32,4 +34,12 @@ store.dispatch(
 
 // store.dispatch(resetInfo())
 
-ReactDOM.render(<AppRouter />, document.getElementById('app'))
+//////////////////////
+
+const jsx = (
+	<Provider store={store}>
+		<AppRouter />
+	</Provider>
+)
+
+ReactDOM.render(jsx, document.getElementById('app'))

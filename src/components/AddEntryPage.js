@@ -2,7 +2,7 @@ import React from 'react'
 
 const AddEntryPage = () => (
 	<div>
-		<h1>AddEntryPage</h1>
+		<small>AddEntryPage</small>
 	</div>
 )
 

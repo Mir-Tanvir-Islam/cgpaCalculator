@@ -1,8 +1,10 @@
 import React from 'react'
+import CourseList from './CourseList'
 
 const DashboardPage = () => (
 	<div>
-		<h1>DashboardPage</h1>
+		<small>DashboardPage</small>
+		<CourseList />
 	</div>
 )
 
