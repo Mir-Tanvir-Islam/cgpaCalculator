@@ -24,6 +24,11 @@ const removeCourse = ({ courseId = '' } = {}) => ({
 })
 
 //Edit Course
+const editCourse = (id, updates) => ({
+	type: 'EDIT_COURSE',
+	id,
+	updates
+})
 
 //Get CGPA
 const getCGPA = () => {
@@ -51,6 +56,17 @@ const coursesReducer = (state = coursesReducerDefaultState, action) => {
 			return [...state, action.course]
 		case 'REMOVE_COURSE':
 			return state.filter(({ id }) => id != action.id)
+		case 'EDIT_COURSE':
+			return state.map((course) => {
+				if (course.id === action.id) {
+					return {
+						...course,
+						...action.updates
+					}
+				} else {
+					return course
+				}
+			})
 		default:
 			return state
 	}
@@ -97,5 +113,7 @@ store.dispatch(
 store.dispatch(
 	addCourse({ courseId: 'PHI 104', semester: 181, grade: 'A', gpa: 4 })
 )
+
+store.dispatch(editCourse('PBH 101', { semester: 191 }))
 
 store.dispatch(removeCourse({ courseId: 'CSE 115' }))
