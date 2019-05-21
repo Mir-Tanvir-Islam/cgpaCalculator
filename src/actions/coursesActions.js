@@ -28,11 +28,3 @@ export const editCourse = (id, updates) => ({
 	updates
 })
 
-//Get CGPA
-export const getCGPA = () => {
-	var cgpa = 0
-	store.getState().courses.map((course) => {
-		cgpa += course.gpa
-	})
-	return cgpa
-}

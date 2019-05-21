@@ -7,7 +7,7 @@ const infoReducerDefaultState = {
 const infoReducer = (state = infoReducerDefaultState, action) => {
 	switch (action.type) {
 		case 'SET_INFO':
-			return { ...state, ...action.updates }
+			return { ...state, ...action.newInfo }
 		case 'RESET_INFO':
 			return { userName: '', id: '', email: '' }
 		default:
