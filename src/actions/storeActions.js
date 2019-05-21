@@ -1,5 +1,4 @@
-//Get CGPA
-const getCGPA = () => {
+export const getCGPA = (store) => {
 	var cgpa = 0
 	store.getState().courses.map((course) => {
 		cgpa += course.gpa

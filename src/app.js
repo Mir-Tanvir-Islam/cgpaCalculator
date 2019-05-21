@@ -5,11 +5,13 @@ import AppRouter from './routers/AppRouter'
 import configureStore from './store/configureStore'
 import { addCourse, removeCourse, editCourse } from './actions/coursesActions'
 import { setInfo, resetInfo } from './actions/infoActions'
+import { getCGPA } from './actions/storeActions'
 
 const store = configureStore()
 
 const unSubscribe = store.subscribe(() => {
 	console.log(store.getState())
+	console.log(getCGPA(store))
 })
 
 store.dispatch(
