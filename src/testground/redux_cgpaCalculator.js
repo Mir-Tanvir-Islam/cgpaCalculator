@@ -73,7 +73,15 @@ const coursesReducer = (state = coursesReducerDefaultState, action) => {
 }
 
 //Set Info
+const setInfo = (newInfo) => ({
+	type: 'SET_INFO',
+	newInfo
+})
+
 //Reset Info
+const resetInfo = () => ({
+	type: 'RESET_INFO'
+})
 
 const infoReducerDefaultState = {
 	userName: 'Mir Tanvir Islam',
@@ -84,7 +92,7 @@ const infoReducerDefaultState = {
 const infoReducer = (state = infoReducerDefaultState, action) => {
 	switch (action.type) {
 		case 'SET_INFO':
-			return { ...state, ...action.updates }
+			return { ...state, ...action.newInfo }
 		case 'RESET_INFO':
 			return { userName: '', id: '', email: '' }
 		default:
@@ -116,4 +124,10 @@ store.dispatch(
 
 store.dispatch(editCourse('PBH 101', { semester: 191 }))
 
+store.dispatch(
+	setInfo({ userName: 'Rasal', id: '1922222', email: 'donkey@kingdom.com' })
+)
+
 store.dispatch(removeCourse({ courseId: 'CSE 115' }))
+
+store.dispatch(resetInfo())

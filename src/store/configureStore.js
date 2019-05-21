@@ -1,11 +1,11 @@
 import { createStore, combineReducers } from 'redux'
-// import gradesReducer from '../reducers/gradesReducer'
-// import infoReducer from '../reducers/infoReducer'
+import coursesReducer from '../reducers/coursesReducer'
+import infoReducer from '../reducers/infoReducer'
 
 export default () => {
 	const store = createStore(
 		combineReducers({
-			grades: gradesReducer,
+			courses: coursesReducer,
 			info: infoReducer
 		})
 	)
