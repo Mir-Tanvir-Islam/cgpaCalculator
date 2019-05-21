@@ -10,7 +10,7 @@ import { getCGPA } from './actions/storeActions'
 const store = configureStore()
 
 const unSubscribe = store.subscribe(() => {
-	console.log(store.getState())
+	//console.log(store.getState())
 	console.log(getCGPA(store))
 })
 
