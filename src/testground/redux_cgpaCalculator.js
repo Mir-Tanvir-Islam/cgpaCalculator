@@ -25,7 +25,14 @@ const removeCourse = ({ courseId = '' } = {}) => ({
 
 //Edit Course
 
-//
+//Get CGPA
+const getCGPA = () => {
+	var cgpa = 0
+	store.getState().courses.map((course) => {
+		cgpa += course.gpa
+	})
+	return cgpa
+}
 
 const coursesReducerDefaultState = [
 	{
@@ -78,12 +85,17 @@ const store = createStore(
 
 const unSubscribe = store.subscribe(() => {
 	console.log(store.getState())
+	console.log(getCGPA())
 })
 
 store.dispatch({ type: 'RESET_INFO', updates: { userName: 'Muez' } })
 
 store.dispatch(
 	addCourse({ courseId: 'PBH 101', semester: 172, grade: 'A', gpa: 4 })
+)
+
+store.dispatch(
+	addCourse({ courseId: 'PHI 104', semester: 181, grade: 'A', gpa: 4 })
 )
 
 store.dispatch(removeCourse({ courseId: 'CSE 115' }))
